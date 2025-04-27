@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Tarefas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-input placeholder="Nova tarefa" [(ngModel)]="novaTarefa"></ion-input>
+    <ion-button (click)="adicionarTarefa()">Adicionar</ion-button>
+  </ion-item>
+
+  <ion-list>
+    <ion-item *ngFor="let tarefa of tarefas; let i = index">
+      <ion-checkbox slot="start" [(ngModel)]="tarefa.concluida" (ionChange)="alternarConclusao(tarefa)"></ion-checkbox>
+      <ion-label [ngClass]="{'concluida': tarefa.concluida}">
+        {{ tarefa.descricao }}
+      </ion-label>
+      <ion-button color="danger" slot="end" (click)="removerTarefa(i)">Remover</ion-button>
+    </ion-item>
+  </ion-list>
+
+</ion-content>
